@@ -77,7 +77,7 @@ exports.userNotation = (req, res, next) => {
     if (req.body.like === 0) {
         Sauce.findOne({ _id: req.params.id })
             .then((sauce) => {
-                if (sauce.usersLiked.find(user => user === req.body.userId)) {
+                if (sauce.usersLiked.includes(req.body.userId)) {
                     Sauce.updateOne(
                         { _id: req.params.id },
                         {
@@ -87,7 +87,7 @@ exports.userNotation = (req, res, next) => {
                         .then(() => res.status(200).json({ message: 'Like annulé !' }))
                         .catch(error => res.status(400).json({ error }));
                 }
-                if (sauce.usersDisliked.find(user => user === req.body.userId)) {
+                if (sauce.usersDisliked.includes(req.body.userId)) {
                     Sauce.updateOne(
                         { _id: req.params.id },
                         {
