@@ -1,5 +1,6 @@
 const multer = require('multer');
 
+// Gestion du nom, format, et chemin de stockage des images.
 const MIME_TYPES = {
     'image/jpg': 'jpg',
     'image/jpeg': 'jpg',
